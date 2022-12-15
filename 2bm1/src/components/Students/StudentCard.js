@@ -1,6 +1,7 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import Carousel from "react-bootstrap/Carousel";
+import AppContext from "../../Context";
 
 function StudentCard(props) {
   return (
@@ -16,7 +17,7 @@ function StudentCard(props) {
                   'objectFit': 'cover'
                 }}
                 className="d-block" 
-                src={`.${imgSrc}`} alt="First slide" />
+                src={`${imgSrc}`} alt="First slide" />
             </Carousel.Item>
           );
         })}

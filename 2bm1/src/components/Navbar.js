@@ -12,8 +12,6 @@ import {
   AiOutlineUser,
 } from "react-icons/ai";
 
-import { CgFileDocument } from "react-icons/cg";
-
 function NavBar() {
   const [expand, updateExpanded] = useState(false);
   const [navColour, updateNavbar] = useState(false);
@@ -120,8 +118,7 @@ function NavBar() {
 
             <Nav.Item className="fork-btn">
               <Button
-                href=""
-                target="_blank"
+                href="/admin"
                 className="fork-btn-inner"
               >
                 Admin
