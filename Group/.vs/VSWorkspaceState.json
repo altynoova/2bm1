@@ -1,6 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Controllers",
+    "\\Models"
   ],
   "SelectedNode": "\\Group.sln",
   "PreviewInSolutionExplorer": false
