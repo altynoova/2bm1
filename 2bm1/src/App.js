@@ -47,10 +47,17 @@ function App() {
 
   useEffect(() => {
     (async () => {
-      //  https://6385ad5cbeaa645826652853.mockapi.io/students
       //  http://localhost:25420/api/student
-      const studentsData = await axios.get('https://6385ad5cbeaa645826652853.mockapi.io/students')
-      upadateStudents(studentsData.data)
+      //
+
+      fetch('https://6760-46-251-201-187.eu.ngrok.io/api/student/', { 
+        method: "get", 
+        headers: new Headers({ 
+          "ngrok-skip-browser-warning": "3000", 
+        }), 
+      }) 
+        .then((response) => response.json()) 
+        .then((data) => upadateStudents(data)) 
     })()
   }, [])
 
