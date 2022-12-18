@@ -27,7 +27,7 @@ namespace Group.Controllers
             [HttpGet]
             public JsonResult Get()
             {
-                string query = @"
+                string query =@"
                             select Name, DateOfBirth, AstrologicalSign, MotherLand, Profile, 
                             Phrases, Photo1, Photo2, Photo3, Photo4, Instagram, Tg from
                             dbo.Students
@@ -46,7 +46,7 @@ namespace Group.Controllers
                         myCon.Close();
                     }
                 }
-                return new JsonResult(dt);
+                return new f(dt);
             }
 
             [HttpPost]
@@ -142,7 +142,7 @@ namespace Group.Controllers
             [HttpDelete("{id}")]
             public JsonResult Delete(int id)
             {
-                string query = @"
+                string query =@"
                             delete from dbo.Students
                             where id= @id
                             ";
@@ -187,7 +187,6 @@ namespace Group.Controllers
             }
         }
         }
-    //Heloo
     }
 
 

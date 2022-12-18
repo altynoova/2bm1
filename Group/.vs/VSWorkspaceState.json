@@ -1,9 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Controllers",
-    "\\Models"
+    "\\Properties"
   ],
-  "SelectedNode": "\\Group.sln",
+  "SelectedNode": "\\AuthOptions.cs",
   "PreviewInSolutionExplorer": false
 }
