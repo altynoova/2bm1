@@ -50,7 +50,7 @@ function App() {
       //  http://localhost:25420/api/student
       //
 
-      fetch('https://6760-46-251-201-187.eu.ngrok.io/api/student/', { 
+      fetch('https://34f4-46-251-199-95.eu.ngrok.io/api/student', { 
         method: "get", 
         headers: new Headers({ 
           "ngrok-skip-browser-warning": "3000", 

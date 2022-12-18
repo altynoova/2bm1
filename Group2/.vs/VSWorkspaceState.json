@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Properties"
+    "\\Controllers",
+    "\\Models"
   ],
-  "SelectedNode": "\\Program.cs",
+  "SelectedNode": "\\Group2.sln",
   "PreviewInSolutionExplorer": false
 }

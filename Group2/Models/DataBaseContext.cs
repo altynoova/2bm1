@@ -15,6 +15,8 @@ namespace Group2.Models
 
         public virtual DbSet<Student>? Students { get; set; }
         public virtual DbSet<User>? Users { get; set; }
+        public virtual DbSet<TimeTable>? TimeTable { get; set; }
+        public virtual DbSet<Lesson>? Lessons { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -41,6 +43,32 @@ namespace Group2.Models
                 entity.Property(e => e.Photo2).HasMaxLength(256).IsUnicode(false);
                 entity.Property(e => e.Photo3).HasMaxLength(256).IsUnicode(false);
                 entity.Property(e => e.Photo4).HasMaxLength(256).IsUnicode(false);
+            });
+
+            modelBuilder.Entity<TimeTable>(entity =>
+            {
+                entity.ToTable("TimeTable");
+                entity.Property(e => e.Id).HasColumnName("Id");
+                entity.Property(e => e.Day).HasMaxLength(50).IsUnicode(false);
+                entity.Property(e => e.First).HasMaxLength(100).IsUnicode(false);
+                entity.Property(e => e.Second).HasMaxLength(100).IsUnicode(false);
+                entity.Property(e => e.Third).HasMaxLength(100).IsUnicode(false);
+                entity.Property(e => e.Fourth).HasMaxLength(100).IsUnicode(false);
+                entity.Property(e => e.Fifth).HasMaxLength(100).IsUnicode(false);
+                entity.Property(e => e.Sixth).HasMaxLength(100).IsUnicode(false);
+                entity.Property(e => e.Seventh).HasMaxLength(100).IsUnicode(false);
+                entity.Property(e => e.Eighth).HasMaxLength(100).IsUnicode(false);
+                entity.Property(e => e.Ninth).HasMaxLength(100).IsUnicode(false);
+                entity.Property(e => e.Tenth).HasMaxLength(100).IsUnicode(false);
+
+            });
+
+            modelBuilder.Entity<Lesson>(entity =>
+            {
+                entity.ToTable("Lessons");
+                entity.Property(e => e.Id).HasColumnName("Id");
+                entity.Property(e => e.Lessonscode).HasMaxLength(50).IsUnicode(false);
+                entity.Property(e => e.Lessonsname).HasMaxLength(100).IsUnicode(false);
             });
 
             OnModelCreatingPartial(modelBuilder);

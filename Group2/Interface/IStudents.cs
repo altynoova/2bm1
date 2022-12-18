@@ -6,8 +6,8 @@ namespace Group2.Interface
     {
         public List<Student> GetStudentDetails();
         public Student GetStudentDetails(int id);
-        public void AddStudent(Student employee);
-        public void UpdateStudent(Student employee);
+        public void AddStudent(Student student);
+        public void UpdateStudent(Student student);
         public Student DeleteStudent(int id);
         public bool CheckStudent(int id);
     }

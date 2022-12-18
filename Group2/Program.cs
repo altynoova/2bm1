@@ -11,7 +11,16 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddDbContext<DataBaseContext>
     (options => options.UseSqlServer(builder.Configuration.GetConnectionString("dbConnection")));
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin()
+    .WithOrigins("*")
+    .AllowAnyMethod().AllowAnyHeader());
+});
 builder.Services.AddTransient<IStudents, StudentRepository>();
+builder.Services.AddTransient<ITimeTable, TimeTableRepository>();
+builder.Services.AddTransient<ILesson, LessonRepository>();
+
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
@@ -40,6 +49,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors();
 
 app.UseAuthentication();
 

@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Group2.Controllers
 {
-    [Authorize]
+   
     [Route("api/student")]
     [ApiController]
     public class StudentController : ControllerBase
@@ -26,6 +26,7 @@ namespace Group2.Controllers
             return await Task.FromResult(_IStudent.GetStudentDetails());
         }
 
+        [Authorize]
         // GET api/employee/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Student>> Get(int id)
@@ -38,6 +39,7 @@ namespace Group2.Controllers
             return students;
         }
 
+        [Authorize]
         // POST api/employee
         [HttpPost]
         public async Task<ActionResult<Student>> Post(Student student)
@@ -46,6 +48,7 @@ namespace Group2.Controllers
             return await Task.FromResult(student);
         }
 
+        [Authorize]
         // PUT api/employee/5
         [HttpPut("{id}")]
         public async Task<ActionResult<Student>> Put(int id, Student student)
@@ -72,6 +75,7 @@ namespace Group2.Controllers
             return await Task.FromResult(student);
         }
 
+        [Authorize]
         // DELETE api/employee/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<Student>> Delete(int id)
