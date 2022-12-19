@@ -47,10 +47,7 @@ function App() {
 
   useEffect(() => {
     (async () => {
-      //  http://localhost:25420/api/student
-      //
-
-      fetch('https://6760-46-251-201-187.eu.ngrok.io/api/student/', { 
+      fetch('https://6385ad5cbeaa645826652853.mockapi.io/students', { 
         method: "get", 
         headers: new Headers({ 
           "ngrok-skip-browser-warning": "3000", 
