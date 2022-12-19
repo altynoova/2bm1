@@ -11,7 +11,7 @@ namespace Group.Controllers
     public class StudentController : ControllerBase
     {
         private readonly IConfiguration _configuration;
-        
+
         public StudentController(IConfiguration configuration)
         {
             _configuration = configuration;
@@ -42,120 +42,6 @@ namespace Group.Controllers
             }
             return new JsonResult(dt);
         }
-
-        [HttpPost]
-        public JsonResult Post(Student students)
-        {
-            string query = @"insert into dbo.Students
-                            (Name, DateOfBirth, AstrologicalSign, MotherLand, Profile, 
-                            Phrases, Photo1, Photo2, Photo3, Photo4, Instagram, Tg)
-                            values(@Name, @DateOfBirth, @AstrologicalSign, @MotherLand, @Profile, 
-                            @Phrases, @Photo1, @Photo2, @Photo3, @Photo4, @Instagram, @Tg )
-                            ";
-            DataTable dt = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("DefaultConnection");
-            SqlDataReader myReader;
-            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
-            {
-                myCon.Open();
-                using (SqlCommand myCommand = new SqlCommand(query, myCon))
-                {
-                    myCommand.Parameters.AddWithValue("Name", students.Name);
-                    myCommand.Parameters.AddWithValue("@DateOfBirth", students.DateOfBirth);
-                    myCommand.Parameters.AddWithValue("@AstrologicalSign", students.AstrologicalSign);
-                    myCommand.Parameters.AddWithValue("@MotherLand", students.MotherLand);
-                    myCommand.Parameters.AddWithValue("@Profile", students.MotherLand);
-                    myCommand.Parameters.AddWithValue("@Phrases", students.Phrases);
-                    myCommand.Parameters.AddWithValue("@Photo1", students.Photo1);
-                    myCommand.Parameters.AddWithValue("@Photo2", students.Photo2);
-                    myCommand.Parameters.AddWithValue("@Photo3", students.Photo3);
-                    myCommand.Parameters.AddWithValue("@Photo4", students.Photo4);
-                    myCommand.Parameters.AddWithValue("@Instagram", students.Instagram);
-                    myCommand.Parameters.AddWithValue("@Tg", students.Tg);
-                    myReader = myCommand.ExecuteReader();
-                    dt.Load(myReader);
-                    myReader.Close();
-                    myCon.Close();
-                }
-            }
-            return new JsonResult("Added successufully");
-        }
-
-
-
-        [HttpPut]
-        public JsonResult Put(Student students)
-        {
-            string query = @"
-                            update dbo.Students
-                            set Name = @Name, 
-                            DateOfBirth = @DateOfBirth,
-                            AstrologicalSign = @AstrologicalSign,
-                            MotherLand =  @MotherLand,
-                            Profile = @Profile,
-                            Phrases =  @Phrases,
-                            Photo1 = @Photo1,
-                            Photo2 =  @Photo2,
-                            Photo3 =  @Photo3,
-                            Photo4 =  @Photo4,
-                            Instagram = @Instagram,
-                            Tg = @Tg
-                            where id= @id
-                            ";
-            DataTable dt = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("DefaultConnection");
-            SqlDataReader myReader;
-            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
-            {
-                myCon.Open();
-                using (SqlCommand myCommand = new SqlCommand(query, myCon))
-                {
-                    myCommand.Parameters.AddWithValue("id", students.Id);
-                    myCommand.Parameters.AddWithValue("Name", students.Name);
-                    myCommand.Parameters.AddWithValue("@DateOfBirth", students.DateOfBirth);
-                    myCommand.Parameters.AddWithValue("@AstrologicalSign", students.AstrologicalSign);
-                    myCommand.Parameters.AddWithValue("@MotherLand", students.MotherLand);
-                    myCommand.Parameters.AddWithValue("@Profile", students.MotherLand);
-                    myCommand.Parameters.AddWithValue("@Phrases", students.Phrases);
-                    myCommand.Parameters.AddWithValue("@Photo1", students.Photo1);
-                    myCommand.Parameters.AddWithValue("@Photo2", students.Photo2);
-                    myCommand.Parameters.AddWithValue("@Photo3", students.Photo3);
-                    myCommand.Parameters.AddWithValue("@Photo4", students.Photo4);
-                    myCommand.Parameters.AddWithValue("@Instagram", students.Instagram);
-                    myCommand.Parameters.AddWithValue("@Tg", students.Tg);
-                    myReader = myCommand.ExecuteReader();
-                    dt.Load(myReader);
-                    myReader.Close();
-                    myCon.Close();
-                }
-            }
-            return new JsonResult("Updated successufully");
-        }
-
-
-        [HttpDelete ("{id}")]
-        public JsonResult Delete(int id)
-        {
-            string query = @"
-                            delete from dbo.Students
-                            where id= @id
-                            ";
-            DataTable dt = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("DefaultConnection");
-            SqlDataReader myReader;
-            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
-            {
-                myCon.Open();
-                using (SqlCommand myCommand = new SqlCommand(query, myCon))
-                {
-                    myCommand.Parameters.AddWithValue("id",id);
-                    myReader = myCommand.ExecuteReader();
-                    dt.Load(myReader);
-                    myReader.Close();
-                    myCon.Close();
-                }
-            }
-            return new JsonResult("Deleted successufully");
-        }
     }
+
 }
