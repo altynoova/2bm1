@@ -448,5 +448,10 @@ $font-large: 24px;
 }
 
 .form-btn {
-  margin-right: 20px;
+  margin: 0 20px 20px;
+}
+
+.inputs input {
+  border: none;
+  border-radius: 5px;
 }
