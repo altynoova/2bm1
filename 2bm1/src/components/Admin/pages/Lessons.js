@@ -1,9 +1,11 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import {TableControl} from 'react-bootstrap-table-control'
+import AppContext from "../../../Context";
 
 function Lessons() {
+  const {lessons} = useContext(AppContext)
   const [lessonId, setId] = useState(0),
         [lessonCode, setCode] = useState(''),
         [lessonName, setName] = useState(''),
@@ -34,16 +36,10 @@ function Lessons() {
         <TableControl
           header={[
             { key: "id", name: "Id" },
-            { key: "code", name: "Code" },
-            { key: "name", name: "Name" },
+            { key: "lessonscode", name: "Code" },
+            { key: "lessonsname", name: "Name" },
           ]}
-          itens={[
-            { id: 1, code: "Name 1", name: "Description 1" },
-            { id: 2, code: "Name 2", name: "Description 2" },
-            { id: 3, code: "Name 3", name: "Description 3" },
-            { id: 4, code: "Name 4", name: "Description 4" },
-            { id: 5, code: "Name 5", name: "Description 5" },
-          ]}
+          itens={lessons}
         />
       </div>
 
@@ -62,30 +58,6 @@ function Lessons() {
           <Form.Label>Lesson name</Form.Label>
           <Form.Control type="text" placeholder="Lesson name" controlId="name" onChange={onInputName}/>
         </Form.Group>
-
-        <div className="mb-3">
-          <Form.Check
-          className="radio-btn"
-            inline
-            label="Add lesson"
-            name="group1"
-            type='radio'
-          />
-          <Form.Check
-          className="radio-btn"
-            inline
-            label="Update lesson"
-            name="group1"
-            type='radio'
-          />
-          <Form.Check
-          className="radio-btn"
-            inline
-            label="Delete lesson"
-            name="group1"
-            type='radio'
-          />
-        </div>
 
         <Button className="form-btn" variant="primary" type="submit" onClick={(event) => {event.preventDefault(); onSubmit('POST')}}>
           Add lesson

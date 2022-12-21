@@ -34,8 +34,11 @@ import AdminTimetable from './components/Admin/pages/Timetable'
 import AppContext from "./Context";
 
 function App() {
+  const url = 'https://2bb7-46-251-194-193.eu.ngrok.io';
   const [load, upadateLoad] = useState(true);
   const [students, upadateStudents] = useState([]);
+  const [lessons, upadateLessons] = useState([]);
+  const [timetable, upadateTiemtable] = useState([]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -48,7 +51,7 @@ function App() {
   useEffect(() => {
     (async () => {
 
-      fetch('https://34f4-46-251-199-95.eu.ngrok.io/api/student', { 
+      fetch(`${url}/api/student`, { 
         method: "get", 
         headers: new Headers({ 
           "ngrok-skip-browser-warning": "3000", 
@@ -56,13 +59,33 @@ function App() {
       }) 
         .then((response) => response.json()) 
         .then((data) => upadateStudents(data)) 
+
+      fetch(`${url}/api/lesson`, { 
+        method: "get", 
+        headers: new Headers({ 
+          "ngrok-skip-browser-warning": "3000", 
+        }), 
+      }) 
+        .then((response) => response.json()) 
+        .then((data) => upadateLessons(data)) 
+      
+      fetch(`${url}/api/timetable`, { 
+        method: "get", 
+        headers: new Headers({ 
+          "ngrok-skip-browser-warning": "3000", 
+        }), 
+      }) 
+        .then((response) => response.json()) 
+        .then((data) => console.log(data)) 
     })()
   }, [])
 
   return (
     <AppContext.Provider
     value={{
-      students
+      students,
+      lessons,
+      timetable
     }}>
     <Router>
       <Preloader load={load} />
