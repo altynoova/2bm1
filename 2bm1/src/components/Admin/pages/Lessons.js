@@ -5,7 +5,7 @@ import {TableControl} from 'react-bootstrap-table-control'
 import AppContext from "../../../Context";
 
 function Lessons() {
-  const {lessons} = useContext(AppContext)
+  const {lessons, lessonsRequest} = useContext(AppContext)
   const [lessonId, setId] = useState(0),
         [lessonCode, setCode] = useState(''),
         [lessonName, setName] = useState(''),
@@ -21,13 +21,17 @@ function Lessons() {
 
 
 
-  const onSubmit = (type) => {
+  const onSubmit = (method) => {
     const data = {
-      id: lessonId,
-      code: lessonCode,
-      name: lessonName,
+      lessonscode: lessonCode || '',
+      lessonsname: lessonName || '',
+      link: '123'
     }
-    console.log(data, type);
+
+    if (method !== 'POST') data.id = lessonId
+
+    console.log(data, method);
+    lessonsRequest(data, method)
   }
 
   return (
@@ -62,7 +66,7 @@ function Lessons() {
         <Button className="form-btn" variant="primary" type="submit" onClick={(event) => {event.preventDefault(); onSubmit('POST')}}>
           Add lesson
         </Button>
-        <Button className="form-btn" variant="primary" type="submit" onClick={(event) => {event.preventDefault(); onSubmit('UPDATE')}}>
+        <Button className="form-btn" variant="primary" type="submit" onClick={(event) => {event.preventDefault(); onSubmit('PUT')}}>
           Update lesson
         </Button>
         <Button className="form-btn" variant="primary" type="submit" onClick={(event) => {event.preventDefault(); onSubmit('DELETE')}}>
