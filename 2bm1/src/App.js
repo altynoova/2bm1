@@ -34,7 +34,8 @@ import AdminTimetable from "./components/Admin/pages/Timetable";
 import AppContext from "./Context";
 
 function App() {
-  const url = "https://d90b-46-251-211-112.eu.ngrok.io";
+  //https://1d23-212-42-96-202.in.ngrok.io
+  const url = "https://6385ad5cbeaa645826652853.mockapi.io";
   const [load, upadateLoad] = useState(true);
   const [students, upadateStudents] = useState([]);
   const [lessons, upadateLessons] = useState([]);
@@ -50,7 +51,7 @@ function App() {
 
   useEffect(() => {
     (async () => {
-      fetch(`${url}/api/student`, {
+      fetch(`${url}/students`, {
         method: "get",
         headers: new Headers({
           "ngrok-skip-browser-warning": "3000",
@@ -59,7 +60,7 @@ function App() {
         .then((response) => response.json())
         .then((data) => upadateStudents(data));
 
-      fetch(`${url}/api/lesson`, {
+      fetch(`${url}/lessons`, {
         method: "get",
         headers: new Headers({
           "ngrok-skip-browser-warning": "3000",
@@ -68,7 +69,7 @@ function App() {
         .then((response) => response.json())
         .then((data) => upadateLessons(data));
 
-      fetch(`${url}/api/timetable`, {
+      fetch(`${url}/timetable`, {
         method: "get",
         headers: new Headers({
           "ngrok-skip-browser-warning": "3000",
