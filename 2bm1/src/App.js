@@ -34,7 +34,6 @@ import AdminTimetable from "./components/Admin/pages/Timetable";
 import AppContext from "./Context";
 
 function App() {
-  //https://1d23-212-42-96-202.in.ngrok.io
   const url = "https://6385ad5cbeaa645826652853.mockapi.io";
   const [load, upadateLoad] = useState(true);
   const [students, upadateStudents] = useState([]);
@@ -126,13 +125,60 @@ function App() {
     }
   };
 
+  const studentRequest = async (obj, method) => {
+    console.log(JSON.stringify(obj), method)
+    if (method === 'PUT') {
+      const response = await fetch(`${url}/students/:${obj.id}`, {
+        method: method, // *GET, POST, PUT, DELETE, etc.
+        mode: 'cors', // no-cors, *cors, same-origin
+        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: 'same-origin', // include, *same-origin, omit
+        headers: {
+          'Content-Type': 'application/json',
+          "ngrok-skip-browser-warning": "3000"
+        },
+        redirect: 'follow', // manual, *follow, error
+        referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+        body: JSON.stringify(obj) // body data type must match "Content-Type" header
+      })
+    } else if (method === 'DELETE') {
+      const response = await fetch(`${url}/students/:${obj.id}`,{
+          method: method, // *GET, POST, PUT, DELETE, etc.
+          mode: 'cors', // no-cors, *cors, same-origin
+          cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+          credentials: 'same-origin', // include, *same-origin, omit
+          headers: {
+            'Content-Type': 'application/json',
+            "ngrok-skip-browser-warning": "3000"
+          },
+          redirect: 'follow', // manual, *follow, error
+          referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+        })
+    } else if (method === 'POST') {
+      const response = await fetch(`${url}/students`, {
+        method: method, // *GET, POST, PUT, DELETE, etc.
+        mode: 'cors', // no-cors, *cors, same-origin
+        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: 'same-origin', // include, *same-origin, omit
+        headers: {
+          'Content-Type': 'application/json',
+          "ngrok-skip-browser-warning": "3000"
+        },
+        redirect: 'follow', // manual, *follow, error
+        referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+        body: JSON.stringify(obj) // body data type must match "Content-Type" header
+      });
+    }
+  };
+
   return (
     <AppContext.Provider
       value={{
         students,
         lessons,
         timetable,
-        lessonsRequest
+        lessonsRequest,
+        studentRequest
       }}
     >
       <Router>

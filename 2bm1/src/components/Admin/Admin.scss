@@ -443,8 +443,9 @@ $font-large: 24px;
   justify-content: space-between;
 }
 
-#lessons-form {
+#lessons-form, #students-form {
   text-align: left;
+  margin-top: 20px;
 }
 
 .form-btn {
@@ -454,4 +455,15 @@ $font-large: 24px;
 .inputs input {
   border: none;
   border-radius: 5px;
+}
+
+.accordion-body_prop {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.accordion-body_prop > div {
+  width: 50%;
+  text-align-last: left;
 }
