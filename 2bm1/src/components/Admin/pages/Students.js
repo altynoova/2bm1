@@ -82,7 +82,7 @@ function Students() {
     if (method !== "POST") data.id = studentId;
 
     console.log(data);
-    // studentRequest(data, method);
+    studentRequest(data, method);
   };
 
   const mapStudents = () => {

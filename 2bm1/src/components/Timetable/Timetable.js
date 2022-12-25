@@ -1,13 +1,11 @@
 import React from "react";
 import "./Timetable.css";
-import Particle from "../Particle";
 import {Container} from 'react-bootstrap'
 
 function Timetable() {
   return (
     <section className="expand">
       <Container fluid className="project-section">
-        <Particle />
         <Container>
           <div className="timetable-container">
             <table>

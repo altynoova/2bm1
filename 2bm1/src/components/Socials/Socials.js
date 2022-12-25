@@ -1,7 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import ProjectCard from "./SocialCards";
-import Particle from "../Particle";
 import leaf from "../../Assets/Projects/leaf.png";
 import emotion from "../../Assets/Projects/emotion.png";
 import editor from "../../Assets/Projects/codeEditor.png";
@@ -13,7 +12,6 @@ function Socials() {
   return (
     <section className="expand">
       <Container fluid className="project-section">
-        <Particle />
         <Container>
           <h1 className="project-heading">
             My Recent <strong className="purple">Works </strong>

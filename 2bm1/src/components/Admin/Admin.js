@@ -1,6 +1,5 @@
 import React from "react";
-import { loadFromFile } from "react-pdf/dist/umd/shared/utils";
-import { Link, Route, Router, Routes, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./Admin.css";
 import Home from "./pages/Home";
 import About from "./pages/About";

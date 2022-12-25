@@ -1,7 +1,5 @@
 import React from "react";
 import { Accordion } from "react-bootstrap";
-import telegram from "../../../../Assets/telegram.png";
-import instagram from "../../../../Assets/instagram.png";
 
 function student(props) {
   return (

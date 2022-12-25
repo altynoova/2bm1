@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import Preloader from "../src/components/Pre";
 
 import Navbar from "./components/Navbar";
@@ -25,20 +24,16 @@ import Lessons from "./components/Lessons/Lessons";
 import Timetable from "./components/Timetable/Timetable";
 import Admin from "./components/Admin/Admin";
 
-import AdminHome from "./components/Admin/pages/Home";
-import AdminAbout from "./components/Admin/pages/About";
-import AdminLessons from "./components/Admin/pages/Lessons";
-import AdminStudents from "./components/Admin/pages/Students";
-import AdminTimetable from "./components/Admin/pages/Timetable";
-
 import AppContext from "./Context";
+import Login from "./components/Login/Login";
 
 function App() {
   const url = "https://6385ad5cbeaa645826652853.mockapi.io";
   const [load, upadateLoad] = useState(true);
   const [students, upadateStudents] = useState([]);
   const [lessons, upadateLessons] = useState([]);
-  const [timetable, upadateTiemtable] = useState([]);
+  const [timetable, upadateTimetable] = useState([]);
+  const [isLoggedIn, updateLogin] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -80,96 +75,108 @@ function App() {
   }, []);
 
   const lessonsRequest = async (obj, method) => {
-    console.log(JSON.stringify(obj), method)
-    if (method === 'PUT') {
+    console.log(JSON.stringify(obj), method);
+    if (method === "PUT") {
       const response = await fetch(`${url}/api/lesson/${obj.id}`, {
         method: method, // *GET, POST, PUT, DELETE, etc.
-        mode: 'cors', // no-cors, *cors, same-origin
-        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-        credentials: 'same-origin', // include, *same-origin, omit
+        mode: "cors", // no-cors, *cors, same-origin
+        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: "same-origin", // include, *same-origin, omit
         headers: {
-          'Content-Type': 'application/json',
-          "ngrok-skip-browser-warning": "3000"
+          "Content-Type": "application/json",
+          "ngrok-skip-browser-warning": "3000",
         },
-        redirect: 'follow', // manual, *follow, error
-        referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-        body: JSON.stringify(obj) // body data type must match "Content-Type" header
-      })
-    } else if (method === 'DELETE') {
-      const response = await fetch(`${url}/api/lesson/${obj.id}`,{
-          method: method, // *GET, POST, PUT, DELETE, etc.
-          mode: 'cors', // no-cors, *cors, same-origin
-          cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-          credentials: 'same-origin', // include, *same-origin, omit
-          headers: {
-            'Content-Type': 'application/json',
-            "ngrok-skip-browser-warning": "3000"
-          },
-          redirect: 'follow', // manual, *follow, error
-          referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-        })
-    } else if (method === 'POST') {
+        redirect: "follow", // manual, *follow, error
+        referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+        body: JSON.stringify(obj), // body data type must match "Content-Type" header
+      });
+    } else if (method === "DELETE") {
+      const response = await fetch(`${url}/api/lesson/${obj.id}`, {
+        method: method, // *GET, POST, PUT, DELETE, etc.
+        mode: "cors", // no-cors, *cors, same-origin
+        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: "same-origin", // include, *same-origin, omit
+        headers: {
+          "Content-Type": "application/json",
+          "ngrok-skip-browser-warning": "3000",
+        },
+        redirect: "follow", // manual, *follow, error
+        referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+      });
+    } else if (method === "POST") {
       const response = await fetch(`${url}/api/lesson`, {
         method: method, // *GET, POST, PUT, DELETE, etc.
-        mode: 'cors', // no-cors, *cors, same-origin
-        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-        credentials: 'same-origin', // include, *same-origin, omit
+        mode: "cors", // no-cors, *cors, same-origin
+        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: "same-origin", // include, *same-origin, omit
         headers: {
-          'Content-Type': 'application/json',
-          "ngrok-skip-browser-warning": "3000"
+          "Content-Type": "application/json",
+          "ngrok-skip-browser-warning": "3000",
         },
-        redirect: 'follow', // manual, *follow, error
-        referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-        body: JSON.stringify(obj) // body data type must match "Content-Type" header
+        redirect: "follow", // manual, *follow, error
+        referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+        body: JSON.stringify(obj), // body data type must match "Content-Type" header
       });
     }
   };
 
   const studentRequest = async (obj, method) => {
-    console.log(JSON.stringify(obj), method)
-    if (method === 'PUT') {
+    console.log(JSON.stringify(obj), method);
+    if (method === "PUT") {
       const response = await fetch(`${url}/students/:${obj.id}`, {
         method: method, // *GET, POST, PUT, DELETE, etc.
-        mode: 'cors', // no-cors, *cors, same-origin
-        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-        credentials: 'same-origin', // include, *same-origin, omit
+        mode: "cors", // no-cors, *cors, same-origin
+        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: "same-origin", // include, *same-origin, omit
         headers: {
-          'Content-Type': 'application/json',
-          "ngrok-skip-browser-warning": "3000"
+          "Content-Type": "application/json",
+          "ngrok-skip-browser-warning": "3000",
         },
-        redirect: 'follow', // manual, *follow, error
-        referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-        body: JSON.stringify(obj) // body data type must match "Content-Type" header
-      })
-    } else if (method === 'DELETE') {
-      const response = await fetch(`${url}/students/:${obj.id}`,{
-          method: method, // *GET, POST, PUT, DELETE, etc.
-          mode: 'cors', // no-cors, *cors, same-origin
-          cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-          credentials: 'same-origin', // include, *same-origin, omit
-          headers: {
-            'Content-Type': 'application/json',
-            "ngrok-skip-browser-warning": "3000"
-          },
-          redirect: 'follow', // manual, *follow, error
-          referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-        })
-    } else if (method === 'POST') {
+        redirect: "follow", // manual, *follow, error
+        referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+        body: JSON.stringify(obj), // body data type must match "Content-Type" header
+      });
+    } else if (method === "DELETE") {
+      const response = await fetch(`${url}/students/:${obj.id}`, {
+        method: method, // *GET, POST, PUT, DELETE, etc.
+        mode: "cors", // no-cors, *cors, same-origin
+        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: "same-origin", // include, *same-origin, omit
+        headers: {
+          "Content-Type": "application/json",
+          "ngrok-skip-browser-warning": "3000",
+        },
+        redirect: "follow", // manual, *follow, error
+        referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+      });
+    } else if (method === "POST") {
       const response = await fetch(`${url}/students`, {
         method: method, // *GET, POST, PUT, DELETE, etc.
-        mode: 'cors', // no-cors, *cors, same-origin
-        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-        credentials: 'same-origin', // include, *same-origin, omit
+        mode: "cors", // no-cors, *cors, same-origin
+        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: "same-origin", // include, *same-origin, omit
         headers: {
-          'Content-Type': 'application/json',
-          "ngrok-skip-browser-warning": "3000"
+          "Content-Type": "application/json",
+          "ngrok-skip-browser-warning": "3000",
         },
-        redirect: 'follow', // manual, *follow, error
-        referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-        body: JSON.stringify(obj) // body data type must match "Content-Type" header
+        redirect: "follow", // manual, *follow, error
+        referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+        body: JSON.stringify(obj), // body data type must match "Content-Type" header
       });
     }
   };
+
+  const loginRequest = (data) => {
+    fetch(`${url}/api/login`, {
+      method: "get",
+      headers: new Headers({
+        "ngrok-skip-browser-warning": "3000",
+      }),
+      body: JSON.stringify(data)
+    })
+      .then((response) => response.json())
+      .then((data) => upadateLessons(data));
+  }
 
   return (
     <AppContext.Provider
@@ -178,7 +185,9 @@ function App() {
         lessons,
         timetable,
         lessonsRequest,
-        studentRequest
+        studentRequest,
+        loginRequest,
+        isLoggedIn,
       }}
     >
       <Router>
@@ -193,7 +202,11 @@ function App() {
             <Route path="/socials" element={<Socials />} />
             <Route path="/students" element={<Students />} />
             <Route path="/lessons" element={<Lessons />} />
-            <Route path="/admin/*" element={<Admin />} />
+            {isLoggedIn ? (
+              <Route path="/admin/*" element={<Admin />} />
+            ) : (
+              <Route path="/login" element={<Login />} />
+            )}
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
           <Footer />

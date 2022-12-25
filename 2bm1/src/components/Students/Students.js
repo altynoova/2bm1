@@ -2,7 +2,6 @@ import React from "react";
 import StudentCard from "./StudentCard";
 import AppContext from "../../Context";
 import {Col, Row, Container} from 'react-bootstrap'
-import Particle from "../Particle";
 
 function Students() {
   const { students } = React.useContext(AppContext);
@@ -18,7 +17,6 @@ function Students() {
   return (
     <section className="expand">
       <Container fluid className="project-section">
-        <Particle />
         <Container>
           <h1 className="project-heading">
             Our students

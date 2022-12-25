@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
@@ -6,15 +6,16 @@ import logo from "../Assets/logo.png";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import {
-  AiFillStar,
   AiOutlineHome,
   AiOutlineFundProjectionScreen,
   AiOutlineUser,
 } from "react-icons/ai";
+import AppContext from "../Context";
 
 function NavBar() {
   const [expand, updateExpanded] = useState(false);
   const [navColour, updateNavbar] = useState(false);
+  const {isLoggedIn} = useContext(AppContext)
 
   function scrollHandler() {
     if (window.scrollY >= 20) {
@@ -118,10 +119,10 @@ function NavBar() {
 
             <Nav.Item className="fork-btn">
               <Button
-                href="/admin"
+                href={isLoggedIn ? '/admin' : '/login'}
                 className="fork-btn-inner"
               >
-                Admin
+                {isLoggedIn ? 'Admin' : 'Sign In'}
               </Button>
             </Nav.Item>
           </Nav>
