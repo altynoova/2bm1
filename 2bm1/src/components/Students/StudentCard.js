@@ -6,7 +6,7 @@ function StudentCard(props) {
   return (
     <Card className="project-card-view">
       <Carousel>
-        {[props.Photo1, props.Photo2, props.Photo3, props.Photo4].map((imgSrc, index) => {
+        {[props.photo1, props.photo2, props.photo3, props.photo4].map((imgSrc, index) => {
           return (
             <Carousel.Item key={index}>
               <img 
@@ -22,17 +22,17 @@ function StudentCard(props) {
         })}
       </Carousel>
       <Card.Body>
-        <Card.Title>{props.Name}</Card.Title>
+        <Card.Title>{props.name}</Card.Title>
         <Card.Text style={{ textAlign: "justify" }}>
-          Birthday: {props.DateOfBirth}
+          Birthday: {props.dateOfBirth}
         </Card.Text>
         <Card.Text style={{ textAlign: "justify" }}>
-          Sign: {props.AstrologicalSign}
+          Sign: {props.astrologicalSign}
         </Card.Text>
         <Card.Text style={{ textAlign: "justify" }}>
-          Where from: {props.MotherLand}
+          Where from: {props.motherLand}
         </Card.Text>
-        <Card.Text style={{ textAlign: "justify" }}>"{props.Phrases}"</Card.Text>
+        <Card.Text style={{ textAlign: "justify" }}>"{props.phrases}"</Card.Text>
       </Card.Body>
     </Card>
   );

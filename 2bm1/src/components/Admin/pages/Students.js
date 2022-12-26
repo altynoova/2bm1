@@ -65,18 +65,18 @@ function Students() {
 
   const onSubmit = (method) => {
     const data = {
-      Name: studentName,
-      DateOfBirth: studentBirthday,
-      AstrologicalSign: studentSign,
-      MotherLand: studentMotherland,
-      Phrases: studentQuote,
-      Profile: studentProfilePhoto,
-      Photo1: studentPhoto1,
-      Photo2: studentPhoto2,
-      Photo3: studentPhoto3,
-      Photo4: studentPhoto4,
-      Instagram: studentInstagram,
-      Tg: studentTelegram,
+      name: studentName,
+      dateOfBirth: new Date(studentBirthday),
+      astrologicalSign: studentSign,
+      motherLand: studentMotherland,
+      phrases: studentQuote,
+      profile: studentProfilePhoto,
+      photo1: studentPhoto1,
+      photo2: studentPhoto2,
+      photo3: studentPhoto3,
+      photo4: studentPhoto4,
+      instagram: studentInstagram,
+      tg: studentTelegram,
     };
 
     if (method !== "POST") data.id = studentId;
@@ -225,7 +225,7 @@ function Students() {
             onSubmit("POST");
           }}
         >
-          Add lesson
+          Add student
         </Button>
         <Button
           className="form-btn"
@@ -236,7 +236,7 @@ function Students() {
             onSubmit("PUT");
           }}
         >
-          Update lesson
+          Update student
         </Button>
         <Button
           className="form-btn"
@@ -247,7 +247,7 @@ function Students() {
             onSubmit("DELETE");
           }}
         >
-          Delete lesson
+          Delete student
         </Button>
       </Form>
     </>

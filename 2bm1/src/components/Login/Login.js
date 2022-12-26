@@ -8,8 +8,8 @@ function Login() {
     event.preventDefault();
     const { username, pass } = document.forms[0];
     const data = {
-        Username: username,
-        Password: pass
+        userName: username.value,
+        passwords: pass.value
     }
     loginRequest(data)
   };

@@ -28,12 +28,12 @@ import AppContext from "./Context";
 import Login from "./components/Login/Login";
 
 function App() {
-  const url = "https://6385ad5cbeaa645826652853.mockapi.io";
+  const url = "https://8cf2-178-217-174-2.in.ngrok.io";
   const [load, upadateLoad] = useState(true);
   const [students, upadateStudents] = useState([]);
   const [lessons, upadateLessons] = useState([]);
   const [timetable, upadateTimetable] = useState([]);
-  const [isLoggedIn, updateLogin] = useState(true);
+  const [isLoggedIn, updateLogin] = useState(localStorage.getItem('token') !== null ? true : false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -45,7 +45,7 @@ function App() {
 
   useEffect(() => {
     (async () => {
-      fetch(`${url}/students`, {
+      fetch(`${url}/api/student`, {
         method: "get",
         headers: new Headers({
           "ngrok-skip-browser-warning": "3000",
@@ -54,7 +54,7 @@ function App() {
         .then((response) => response.json())
         .then((data) => upadateStudents(data));
 
-      fetch(`${url}/lessons`, {
+      fetch(`${url}/api/lesson`, {
         method: "get",
         headers: new Headers({
           "ngrok-skip-browser-warning": "3000",
@@ -63,14 +63,14 @@ function App() {
         .then((response) => response.json())
         .then((data) => upadateLessons(data));
 
-      fetch(`${url}/timetable`, {
+      fetch(`${url}/api/timetable`, {
         method: "get",
         headers: new Headers({
           "ngrok-skip-browser-warning": "3000",
         }),
       })
         .then((response) => response.json())
-        .then((data) => console.log(data));
+        .then((data) => upadateTimetable(data));
     })();
   }, []);
 
@@ -85,6 +85,7 @@ function App() {
         headers: {
           "Content-Type": "application/json",
           "ngrok-skip-browser-warning": "3000",
+          "Authorization": "Bearer " + localStorage.getItem("token")
         },
         redirect: "follow", // manual, *follow, error
         referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
@@ -99,6 +100,7 @@ function App() {
         headers: {
           "Content-Type": "application/json",
           "ngrok-skip-browser-warning": "3000",
+          "Authorization": "Bearer " + localStorage.getItem("token")
         },
         redirect: "follow", // manual, *follow, error
         referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
@@ -112,6 +114,7 @@ function App() {
         headers: {
           "Content-Type": "application/json",
           "ngrok-skip-browser-warning": "3000",
+          "Authorization": "Bearer " + localStorage.getItem("token")
         },
         redirect: "follow", // manual, *follow, error
         referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
@@ -123,7 +126,7 @@ function App() {
   const studentRequest = async (obj, method) => {
     console.log(JSON.stringify(obj), method);
     if (method === "PUT") {
-      const response = await fetch(`${url}/students/:${obj.id}`, {
+      const response = await fetch(`${url}/api/student/${obj.id}`, {
         method: method, // *GET, POST, PUT, DELETE, etc.
         mode: "cors", // no-cors, *cors, same-origin
         cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
@@ -131,13 +134,15 @@ function App() {
         headers: {
           "Content-Type": "application/json",
           "ngrok-skip-browser-warning": "3000",
+          "Authorization": "Bearer " + localStorage.getItem("token")
         },
         redirect: "follow", // manual, *follow, error
         referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
         body: JSON.stringify(obj), // body data type must match "Content-Type" header
+
       });
     } else if (method === "DELETE") {
-      const response = await fetch(`${url}/students/:${obj.id}`, {
+      const response = await fetch(`${url}/api/student/${obj.id}`, {
         method: method, // *GET, POST, PUT, DELETE, etc.
         mode: "cors", // no-cors, *cors, same-origin
         cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
@@ -145,12 +150,13 @@ function App() {
         headers: {
           "Content-Type": "application/json",
           "ngrok-skip-browser-warning": "3000",
+          "Authorization": "Bearer " + localStorage.getItem("token")
         },
         redirect: "follow", // manual, *follow, error
         referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
       });
     } else if (method === "POST") {
-      const response = await fetch(`${url}/students`, {
+      const response = await fetch(`${url}/api/student`, {
         method: method, // *GET, POST, PUT, DELETE, etc.
         mode: "cors", // no-cors, *cors, same-origin
         cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
@@ -158,6 +164,7 @@ function App() {
         headers: {
           "Content-Type": "application/json",
           "ngrok-skip-browser-warning": "3000",
+          "Authorization": "Bearer " + localStorage.getItem("token")
         },
         redirect: "follow", // manual, *follow, error
         referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
@@ -166,17 +173,26 @@ function App() {
     }
   };
 
-  const loginRequest = (data) => {
-    fetch(`${url}/api/login`, {
-      method: "get",
-      headers: new Headers({
+  const loginRequest = async (data) => {
+    const response = await fetch(`${url}/api/token`, {
+      method: "POST", // *GET, POST, PUT, DELETE, etc.
+      mode: "cors", // no-cors, *cors, same-origin
+      cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: "same-origin", // include, *same-origin, omit
+      headers: {
+        "Content-Type": "application/json",
         "ngrok-skip-browser-warning": "3000",
-      }),
-      body: JSON.stringify(data)
+      },
+      redirect: "follow", // manual, *follow, error
+      referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+      body: JSON.stringify(data), // body data type must match "Content-Type" header
     })
-      .then((response) => response.json())
-      .then((data) => upadateLessons(data));
-  }
+      .then((response) => response.text())
+      .then((token) => {
+        localStorage.setItem('token', token)
+        updateLogin(true)
+      });
+  };
 
   return (
     <AppContext.Provider
