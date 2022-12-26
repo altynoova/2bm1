@@ -25,7 +25,7 @@ namespace Group2.Controllers
             return await Task.FromResult(_ILesson.GetLessonDetails());
         }
 
-        [Authorize]
+
         // GET api/lesson/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Lesson>> Get(int id)
@@ -38,8 +38,8 @@ namespace Group2.Controllers
             return lessons;
         }
 
+
         [Authorize]
-        // POST api/lessons
         [HttpPost]
         public async Task<ActionResult<Lesson>> Post(Lesson lesson)
         {
@@ -47,8 +47,8 @@ namespace Group2.Controllers
             return await Task.FromResult(lesson);
         }
 
+
         [Authorize]
-        // PUT api/lesson/5
         [HttpPut("{id}")]
         public async Task<ActionResult<Lesson>> Put(int id, Lesson lesson)
         {
@@ -74,8 +74,8 @@ namespace Group2.Controllers
             return await Task.FromResult(lesson);
         }
 
+
         [Authorize]
-        // DELETE api/lesson/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<Lesson>> Delete(int id)
         {

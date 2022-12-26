@@ -17,6 +17,7 @@ builder.Services.AddCors(options =>
     .WithOrigins("*")
     .AllowAnyMethod().AllowAnyHeader());
 });
+
 builder.Services.AddTransient<IStudents, StudentRepository>();
 builder.Services.AddTransient<ITimeTable, TimeTableRepository>();
 builder.Services.AddTransient<ILesson, LessonRepository>();
@@ -50,7 +51,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors();
+app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
 app.UseAuthentication();
 

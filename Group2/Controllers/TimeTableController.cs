@@ -25,7 +25,7 @@ namespace Group2.Controllers
             return await Task.FromResult(_ITimeTable.GetTimeTableDetails());
         }
 
-        [Authorize]
+
         // GET api/employee/5
         [HttpGet("{id}")]
         public async Task<ActionResult<TimeTable>> Get(int id)
