@@ -33,6 +33,10 @@ function StudentCard(props) {
           Where from: {props.motherLand}
         </Card.Text>
         <Card.Text style={{ textAlign: "justify" }}>"{props.phrases}"</Card.Text>
+        <div className="social-links">
+          <a href={props.instagram} target="_blank"><img src="https://img.icons8.com/fluency/48/null/instagram-new.png"/></a>
+          <a href={props.tg} target="_blank"><img src="https://img.icons8.com/color/48/null/telegram-app--v1.png"/></a>
+        </div>
       </Card.Body>
     </Card>
   );

@@ -467,3 +467,14 @@ $font-large: 24px;
   width: 50%;
   text-align-last: left;
 }
+
+.timetable {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+
+.timetable > .input-container {
+  width: 800px;
+}

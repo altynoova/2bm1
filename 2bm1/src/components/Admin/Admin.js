@@ -141,7 +141,7 @@ function Admin() {
                 </Link>
               </li>
             </ul>
-            <div className="account-info">
+            {/* <div className="account-info">
               <div className="account-info-picture">
                 <img
                   src="https://images.unsplash.com/photo-1527736947477-2790e28f3443?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTE2fHx3b21hbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60"
@@ -167,10 +167,10 @@ function Admin() {
                   <circle cx="5" cy="12" r="1" />
                 </svg>
               </button>
-            </div>
+            </div> */}
           </div>
           <div className="app-content">
-            <div className="app-content-header">
+            {/* <div className="app-content-header">
               <h1 className="app-content-headerText">Edit</h1>
               <button className="app-content-headerButton">Add Product</button>
             </div>
@@ -256,7 +256,7 @@ function Admin() {
                   </svg>
                 </button>
               </div>
-            </div>
+            </div> */}
             <div className="products-area-wrapper tableView">
                 {
                     getTab(location.pathname)

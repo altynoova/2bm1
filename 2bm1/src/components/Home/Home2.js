@@ -2,11 +2,7 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import myImg from "../../Assets/avatar.svg";
 import Tilt from "react-parallax-tilt";
-import {
-  AiFillGithub,
-  AiOutlineTwitter,
-  AiFillInstagram,
-} from "react-icons/ai";
+import { AiFillGithub, AiFillInstagram, AiFillYoutube } from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
 
 function Home2() {
@@ -16,41 +12,57 @@ function Home2() {
         <Row>
           <Col md={8} className="home-about-description">
             <h1 style={{ fontSize: "2.6em" }}>
-              LET ME <span className="purple"> INTRODUCE </span> MYSELF
+              We're <span className="purple"> Manas 2bm1 </span>
             </h1>
             <p className="home-about-body">
-              I fell in love with programming and I have at least learnt
-              something, I think… 🤷‍♂️
+              We fell in love with programming and We have at least learnt
+              something, We think… 🤷‍♂️
               <br />
-              <br />I am fluent in classics like
+              <br />
+              What we like?
               <i>
-                <b className="purple"> C++, Javascript and Python. </b>
+                <b className="purple"> Yemek, Javascript and Selim Hoca. </b>
               </i>
               <br />
               <br />
-              My field of Interest's are building new &nbsp;
+              We like having parties.&nbsp;
               <i>
-                <b className="purple">Web Technologies and Products </b> and
-                also in areas related to{" "}
+                <b className="purple">Going to theaters </b> and Marsel's
+                office.
                 <b className="purple">
-                  Deep Learning and Natural Launguage Processing.
+                  Playing videogames and celebrating our birthdays.
                 </b>
               </i>
               <br />
               <br />
-              Whenever possible, I also apply my passion for developing products
-              with <b className="purple">Node.js</b> and
-              <i>
-                <b className="purple">
-                  {" "}
-                  Modern Javascript Library and Frameworks
-                </b>
-              </i>
-              &nbsp; like
-              <i>
-                <b className="purple"> React.js and Next.js</b>
-              </i>
+              Whenever possible, We also do our
+              <b className="purple"> Homeworks</b>
             </p>
+            <blockquote className="blockquote mb-0">
+              <h4 style={{ fontSize: "2.1em", paddingBottom: "20px" }}>
+                БИЗДИН ДЕВИЗ
+              </h4>
+              <p style={{ textAlign: "justify" }}>
+                No hugs & kisses,
+                <br />
+                only bugs & fixes
+                <br />
+                No dates, only updates
+                <br />
+                No crush,only crash
+                <br />
+                No romance, only maintenance
+                <br />
+                No hagging, only debugging
+                <br />
+                No rest, only test
+                <br />
+                No smile, only compile
+                <br />
+                No one trustable, only variable
+                <br />
+              </p>
+            </blockquote>
           </Col>
           <Col md={4} className="myAvtar">
             <Tilt>
@@ -60,14 +72,11 @@ function Home2() {
         </Row>
         <Row>
           <Col md={12} className="home-about-social">
-            <h1>FIND ME ON</h1>
-            <p>
-              Feel free to <span className="purple">connect </span>with me
-            </p>
+            <h1>FIND US ON</h1>
             <ul className="home-about-social-links">
               <li className="social-icons">
                 <a
-                  href="https://github.com/soumyajit4419"
+                  href="https://github.com/Binqie"
                   target="_blank"
                   rel="noreferrer"
                   className="icon-colour  home-social-icons"
@@ -77,27 +86,17 @@ function Home2() {
               </li>
               <li className="social-icons">
                 <a
-                  href="https://twitter.com/Soumyajit4419"
+                  href="https://www.youtube.com/channel/UC6fDLO6IvHxU-QvzrZORTHA"
                   target="_blank"
                   rel="noreferrer"
                   className="icon-colour  home-social-icons"
                 >
-                  <AiOutlineTwitter />
+                  <AiFillYoutube />
                 </a>
               </li>
               <li className="social-icons">
                 <a
-                  href="https://www.linkedin.com/in/soumyajit4419/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="icon-colour  home-social-icons"
-                >
-                  <FaLinkedinIn />
-                </a>
-              </li>
-              <li className="social-icons">
-                <a
-                  href="https://www.instagram.com/soumyajit4419"
+                  href="https://www.instagram.com/manas_2bm1/"
                   target="_blank"
                   rel="noreferrer"
                   className="icon-colour home-social-icons"

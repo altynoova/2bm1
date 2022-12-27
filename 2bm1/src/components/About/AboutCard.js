@@ -7,31 +7,41 @@ function AboutCard() {
     <Card className="quote-card-view">
       <Card.Body>
         <blockquote className="blockquote mb-0">
+          <h1 style={{ fontSize: "2.1em", paddingBottom: "20px" }}>
+            БИЗДИН ГРУППА ЖОНУНДО МААЛЫМАТ
+          </h1>
           <p style={{ textAlign: "justify" }}>
-            Hi Everyone, I am <span className="purple">Soumyajit Behera </span>
-            from <span className="purple"> Bhubaneswar, India.</span>
-            <br />I am a junior pursuing IMSC in Maths and Computing in BIT
-            Mesra.
-            <br />
-            <br />
-            Apart from coding, some other activities that I love to do!
+            Биздин группабызда 35 студент : 10 кыз жана 25 эркек бала бар.
+            Группанын копчулук болумун Кыргызстандын жарандары тузот. Чет
+            олкодон келген: Туркиядан-1, Озбекстандан-2 жана Казакстандан-1
+            студенттерибиз бар. Болум жетекчиси - Барыктабасов Касым.
+            2019-2020-окуу жылында дярдоо курсун окуп, 2020-2021-жылда аралыктан
+            билим алдык, 2021-2022-окуу жылын салттуу турдо окуп баштадык.
           </p>
-          <ul>
-            <li className="about-activity">
-              <ImPointRight /> Playing Games
-            </li>
-            <li className="about-activity">
-              <ImPointRight /> Writting Tech Blogs
-            </li>
-            <li className="about-activity">
-              <ImPointRight /> Travelling
-            </li>
-          </ul>
-
-          <p style={{ color: "rgb(155 126 172)" }}>
-            "Strive to build things that make a difference!"{" "}
+        </blockquote>
+        <blockquote className="blockquote mb-0">
+          <h4>БИЗДИН МИССИЯБЫЗ</h4>
+          <p style={{ textAlign: "justify" }}>
+            Борбордук Азия өлкөлөрүнүн экономика жана социалдык жактан
+            өнүгүүсүнө өз салымын кошкон, заманбап маалымат технологияларын
+            колдонгон, дүйнө жүзүндө болуп турган илимий өсүп-өнүгүүлөргө
+            салымын кошкон, өндүрүштө жаңы технологияларды колдонгон, адамга
+            жагымдуу жашоо чөйрөсүн түзүүдө кызмат кылууга даяр жогорку билимдүү
+            инженерлер болуп чыгуу.
           </p>
-          <footer className="blockquote-footer">Soumyajit</footer>
+        </blockquote>
+        <blockquote className="blockquote mb-0">
+          <p style={{ textAlign: "justify" }}>
+            Барыктабасов Касым-1998-2004. Ж. Баласагын атындагы Кыргыз Улуттук
+            Университети, Эл-аралык Билим берүү Программаларын Интеграциялоо
+            Институту (ИИМОП), Компьютер Технологиялары жана Интернет
+            Кыргыз-Америка Факультети (KAF-Internet) Бакалавр,Магистр Илимий
+            ишмердик тармагы Компьютерлер, маалымат технологиялары, программалык
+            инженерия, программалоо, объектке багытталган программалоо. Кесиптик
+            тажрыйбасы 9/2005 - Азыркы убакытка чейин Кыргыз-Түрк Манас
+            Университети, Бишкек, Кыргыз Республикасынын Инженерия Факультетинин
+            Програмдык инженердиги бөлүмүндө ага окутуучу
+          </p>
         </blockquote>
       </Card.Body>
     </Card>

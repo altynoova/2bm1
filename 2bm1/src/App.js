@@ -27,8 +27,12 @@ import Admin from "./components/Admin/Admin";
 import AppContext from "./Context";
 import Login from "./components/Login/Login";
 
+function changePath() {
+  window.location.pathname = '/'
+}
+
 function App() {
-  const url = "https://8cf2-178-217-174-2.in.ngrok.io";
+  const url = "https://fec5-212-42-96-202.in.ngrok.io";
   const [load, upadateLoad] = useState(true);
   const [students, upadateStudents] = useState([]);
   const [lessons, upadateLessons] = useState([]);
@@ -44,7 +48,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    (async () => {
+    const getData = async () => {
       fetch(`${url}/api/student`, {
         method: "get",
         headers: new Headers({
@@ -71,11 +75,11 @@ function App() {
       })
         .then((response) => response.json())
         .then((data) => upadateTimetable(data));
-    })();
+    };
+    getData()
   }, []);
 
   const lessonsRequest = async (obj, method) => {
-    console.log(JSON.stringify(obj), method);
     if (method === "PUT") {
       const response = await fetch(`${url}/api/lesson/${obj.id}`, {
         method: method, // *GET, POST, PUT, DELETE, etc.
@@ -121,10 +125,10 @@ function App() {
         body: JSON.stringify(obj), // body data type must match "Content-Type" header
       });
     }
+    window.location.pathname = '/admin'
   };
 
   const studentRequest = async (obj, method) => {
-    console.log(JSON.stringify(obj), method);
     if (method === "PUT") {
       const response = await fetch(`${url}/api/student/${obj.id}`, {
         method: method, // *GET, POST, PUT, DELETE, etc.
@@ -171,6 +175,57 @@ function App() {
         body: JSON.stringify(obj), // body data type must match "Content-Type" header
       });
     }
+    window.location.pathname = '/admin'
+  };
+
+  const timetableRequest = async (obj, method) => {
+    if (method === "PUT") {
+      const response = await fetch(`${url}/api/timetable/${obj.id}`, {
+        method: method, // *GET, POST, PUT, DELETE, etc.
+        mode: "cors", // no-cors, *cors, same-origin
+        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: "same-origin", // include, *same-origin, omit
+        headers: {
+          "Content-Type": "application/json",
+          "ngrok-skip-browser-warning": "3000",
+          "Authorization": "Bearer " + localStorage.getItem("token")
+        },
+        redirect: "follow", // manual, *follow, error
+        referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+        body: JSON.stringify(obj), // body data type must match "Content-Type" header
+
+      });
+    } else if (method === "DELETE") {
+      const response = await fetch(`${url}/api/timetable/${obj.id}`, {
+        method: method, // *GET, POST, PUT, DELETE, etc.
+        mode: "cors", // no-cors, *cors, same-origin
+        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: "same-origin", // include, *same-origin, omit
+        headers: {
+          "Content-Type": "application/json",
+          "ngrok-skip-browser-warning": "3000",
+          "Authorization": "Bearer " + localStorage.getItem("token")
+        },
+        redirect: "follow", // manual, *follow, error
+        referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+      });
+    } else if (method === "POST") {
+      const response = await fetch(`${url}/api/timetable`, {
+        method: method, // *GET, POST, PUT, DELETE, etc.
+        mode: "cors", // no-cors, *cors, same-origin
+        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: "same-origin", // include, *same-origin, omit
+        headers: {
+          "Content-Type": "application/json",
+          "ngrok-skip-browser-warning": "3000",
+          "Authorization": "Bearer " + localStorage.getItem("token")
+        },
+        redirect: "follow", // manual, *follow, error
+        referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+        body: JSON.stringify(obj), // body data type must match "Content-Type" header
+      });
+    }
+    window.location.pathname = '/admin'
   };
 
   const loginRequest = async (data) => {
@@ -202,6 +257,7 @@ function App() {
         timetable,
         lessonsRequest,
         studentRequest,
+        timetableRequest,
         loginRequest,
         isLoggedIn,
       }}
@@ -215,7 +271,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/timetable" element={<Timetable />} />
-            <Route path="/socials" element={<Socials />} />
+            {/* <Route path="/socials" element={<Socials />} /> */}
             <Route path="/students" element={<Students />} />
             <Route path="/lessons" element={<Lessons />} />
             {isLoggedIn ? (
