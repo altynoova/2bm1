@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Meerim\\source\\repos\\project\\Group2\\Group2.csproj": {}
+    "C:\\2bm1\\Group2\\Group2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Meerim\\source\\repos\\project\\Group2\\Group2.csproj": {
+    "C:\\2bm1\\Group2\\Group2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Meerim\\source\\repos\\project\\Group2\\Group2.csproj",
+        "projectUniqueName": "C:\\2bm1\\Group2\\Group2.csproj",
         "projectName": "Group2",
-        "projectPath": "C:\\Users\\Meerim\\source\\repos\\project\\Group2\\Group2.csproj",
-        "packagesPath": "C:\\Users\\Meerim\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Meerim\\source\\repos\\project\\Group2\\obj\\",
+        "projectPath": "C:\\2bm1\\Group2\\Group2.csproj",
+        "packagesPath": "C:\\Users\\altynoova\\.nuget\\packages\\",
+        "outputPath": "C:\\2bm1\\Group2\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Meerim\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\altynoova\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -67,7 +63,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -79,7 +76,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     }
